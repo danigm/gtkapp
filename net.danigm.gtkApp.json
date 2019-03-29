@@ -1,0 +1,39 @@
+{
+    "app-id": "net.danigm.gtkApp",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.32",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+    "command": "gtkapp",
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--filesystem=xdg-run/dconf",
+        "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin",
+        "build-args": ["--share=network"]
+    },
+    "modules": [
+        {
+            "name": "gtkapp",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "CARGO_HOME=target/cargo-home cargo build",
+                "install -D target/debug/gtkapp /app/bin/gtkapp"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "url": "."
+                }
+            ]
+        }
+    ]
+}

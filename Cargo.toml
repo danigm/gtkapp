@@ -1,0 +1,13 @@
+[package]
+name = "gtkapp"
+version = "0.1.0"
+authors = ["Daniel Garcia Moreno <daniel@endlessm.com>"]
+edition = "2018"
+
+[dependencies]
+gio = "0.6.0"
+glib = "0.7.1"
+
+[dependencies.gtk]
+version = "0.6.0"
+features = ["v3_22"]
