@@ -9,6 +9,8 @@ use gtk::prelude::*;
 
 use std::env::args;
 
+mod custom;
+
 fn build_ui(application: &gtk::Application) {
     let window = gtk::ApplicationWindow::new(application);
 
@@ -23,6 +25,8 @@ fn build_ui(application: &gtk::Application) {
     window.add(&button);
 
     window.show_all();
+
+    custom::test();
 }
 
 fn main() {
